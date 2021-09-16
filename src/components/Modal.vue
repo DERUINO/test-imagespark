@@ -1,20 +1,22 @@
 <template>
-  <div class="modal-wrapper" v-show="modal.visible">
-      <div class="modal-bg" @click="closeModal"></div>
-      <div class="modal-content">
-          <div class="content-logo">
-              <img :src="users.current.avatar_url">
-          </div>
-          <div class="content-name">{{ users.current.name }}</div>
-          <div class="content-login">{{ users.current.login }}</div>
-          <div class="content-bio">{{ users.current.bio }}</div>
-          <div class="content-about">
-              <div class="company">{{ users.current.company }}</div>
-              <div class="location">{{ users.current.location }}</div>
-              <div class="site"><a :href="users.current.blog">{{ users.current.blog }}</a></div>
-          </div>
-      </div>
-  </div>
+    <transition name="fade">
+        <div class="modal-wrapper" v-show="modal.visible">
+            <div class="modal-bg" @click="closeModal"></div>
+            <div class="modal-content">
+                <div class="content-logo">
+                    <img :src="users.current.avatar_url">
+                </div>
+                <div class="content-name">{{ users.current.name }}</div>
+                <div class="content-login">{{ users.current.login }}</div>
+                <div class="content-bio">{{ users.current.bio }}</div>
+                <div class="content-about">
+                    <div class="company">{{ users.current.company }}</div>
+                    <div class="location">{{ users.current.location }}</div>
+                    <div class="site"><a :href="users.current.blog">{{ users.current.blog }}</a></div>
+                </div>
+            </div>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -42,6 +44,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+    .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */ {
+        opacity: 0;
+    }
+
     .modal-wrapper {
         width: 100%;
         height: 100%;

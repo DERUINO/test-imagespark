@@ -52,7 +52,6 @@ export default new Vuex.Store({
         },
 
         closeModal(state) {
-            state.users.current = {};
             state.modal.visible = false;
         },
 

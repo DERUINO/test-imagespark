@@ -30,7 +30,7 @@
         <div class="search-wait" v-show="search.wait">Идет поиск...</div>
         <div class="no-results" v-show="users.array.length <= 0 && !search.wait">Ничего не найдено :(</div>
     </div>
-    <div class="pagination" v-if="pages.static > 1 && !search.wait && users.array.length > 0">
+    <div class="pagination" v-show="pages.static > 1 && !search.wait && users.array.length > 0">
         <div class="page" v-for="(page, pageIndex) in pagesCount" :key="pageIndex" :class="{ current: pages.current === pageIndex + 1 }" @click="changePage(pageIndex + 1)">
             {{ page }}
         </div>
